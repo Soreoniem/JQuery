@@ -1,0 +1,49 @@
+﻿<html> 
+<head> 
+	<title>Practica 26 [bici]</title> 
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+	<!--CSS--> 
+	<link rel="stylesheet" type="text/css" href=".\CSS\Practica 26 [bici].css"/> 
+	<link rel="stylesheet" type="text/css" href=".\CSS\colores.css"/> 
+	 
+	<!--JQuery--> 
+	<script type="text/javascript" src=".\JQuery\JQuery.js"></script> 
+	 
+	<!--Javascript--> 
+	<script type="text/javascript" src=".\Javascript\Javascript - Metodos de ayuda.js"></script> 
+	<script type="text/javascript" src=".\Javascript\Accesorios.js"></script> 
+	<script type="text/javascript" src=".\Javascript\Practica 26 [bici].js"></script> 
+</head> 
+<body> 
+	<h1 class="conectarCSS fondoVerde_Transparente">Practica Practica 26 [bici]</h1> 
+	<button id="activarDesactivarSeleccionar">Seleccionar: Activado</button>
+	
+	<table id="compra" border="1">
+		<thead>
+			<tr>
+				<td>Producto</td>
+				<td>Unidades</td>
+				<td>Precio</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Bicicleta de montaña 28 v. talla L</td>
+				<td>1</td>
+				<td>400€</td>
+			</tr>
+			<tr id="total">
+				<td>Total:</td>
+				<td></td>
+				<td id="totalval">400€</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2>Accesorios opcionales</h2>
+	<select id="accesorios">
+	</select>
+	<input id="cantidad" type="number" value="1" min="1" max="99"/>
+	<input id="boton" type="button" value="Comprar"/>
+</body> 
+</html> 
