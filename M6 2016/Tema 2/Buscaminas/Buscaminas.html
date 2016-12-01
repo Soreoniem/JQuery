@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+	<title>Buscaminas</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" type="text/css" href=".\CSS\Buscaminas.css"/>
+	
+	<script type="text/javascript" src=".\Javascript\JQuery.js"></script>
+	<script type="text/javascript" src=".\Javascript\Buscaminas.js"></script>
+	
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div id="fondo">
+		<img src=".\Imgs\Fondo.jpg" class="ajustar"/>
+	</div>
+	<!-- Trigger the modal with a button -->
+	<div id="configuraciónTitulo">
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">⚙</button>
+		<span class="titulo">Buscaminas</span>
+	</div>
+	<script>
+		Buscaminas(10, 10, 10);
+	</script>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+			
+				<div class="contenedorMenu">
+					<div class="modal-header">
+				
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Nueva partida</h4>
+					</div>
+					
+					<div class="modal-body">
+						Tamaño: <input id="tamañoX" type="number" name="quantity" value="10" min="2">
+						x <input id="tamañoY" type="number" name="quantity" value="10" min="2">
+						<br/>Dificultad (%): <input id="dificultad" type="number" name="quantity" value="12" min="1" max="100">
+						<br/><button onclick="Musica()" type="button" class="btn btn-default" data-dismiss="modal"><span id="musicaIcono">🔈</span></button>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="NuevoJuego(
+																															document.getElementById('tamañoX').value,
+																															document.getElementById('tamañoY').value,
+																															document.getElementById('dificultad').value
+																														)
+						">Aceptar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Sonidos -->
+<audio id="musicaExplosion" src="./Sonidos/explosión.mp3" preload="auto"></audio>
+<audio id="musicaFondo1" src="./Sonidos/musica1.mp3" preload="auto"></audio>
+<audio id="musicaFondo2" src="./Sonidos/musica2.mp3" preload="auto"></audio>
+<audio id="musicaFondo3" src="./Sonidos/musica3.mp3" preload="auto"></audio>
+<audio id="musicaPerdedor" src="./Sonidos/perdedor.mp3" preload="auto"></audio>
+<audio id="musicaGanador" src="./Sonidos/ganador.mp3" preload="auto"></audio>
+</body>
+</html>

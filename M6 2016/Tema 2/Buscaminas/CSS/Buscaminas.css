@@ -1,0 +1,184 @@
+﻿/*
+	relative = se mueve por su alrededor
+	absolute = se mueve por su alrededor quitando el flujo
+	fixed = se mueve por la ventana
+	
+	float = flotar a algún lado del padre;
+   ---
+   Degradados
+	background: linear-gradient(135deg, rgba(0,0,0,0) 20%, red);
+		linear-gradient
+		radial-gradient
+		repeating-linear-gradient
+		
+		radial-gradient(circle, ...)
+		
+		(probar: exactamente no se lo que hacen)
+		radial-gradient(closest-side at 60% 55%) encoger dentro
+		radial-gradient(farthest-side at 60% 55%) estirar dentro
+		radial-gradient(farthest-corner at 60% 55%) estirar dentro
+		
+*/
+																	/*
+		  ╔════════════╗
+		  ║   TÍTULO   ║
+	┌──╦┐ ╠────────────╣ ┌╦───────────────────────────────────────┐
+	│  ╚══╝            ╚══╝                                       │
+	│ Mensaje . . .                                               │
+	└─────────────────────────────────────────────────────────────┘ */
+
+tbody
+{
+	border: ridge 10px #BDBDBD;
+}
+caption
+{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-left: outset 10px #BDBDBD;
+	border-right: outset 10px #BDBDBD;
+	border-top: outset 10px #BDBDBD;
+	background-color: whitesmoke;
+}
+table *
+{
+	text-align: center;
+}
+
+#configuraciónTitulo
+{
+	
+	width: 250px;
+	top: 20px;
+	left: -400px;
+	position: relative;
+	/* retraso (timepo) */
+	animation-delay: 3s;
+
+	/* duración */
+	animation-duration: 2s;
+
+	/* nombre */
+	animation-name: configTitulo;
+
+	/* mantener el final de la animación */
+	animation-fill-mode: forwards;
+}
+
+	/* Animación del Juego */
+	@keyframes configTitulo
+	{
+		0%{		left: -400px; }
+		100%{	left: 10px; }
+	}
+table
+{
+	margin: 0 auto !important;
+	top: -500px;
+	position: relative;
+	animation: juego 4s forwards;
+}
+
+	/* Animación del Juego */
+	@keyframes juego
+	{
+		0%{		top: -500px; }
+		100%{	top: 50px; }
+	}
+
+td img
+{
+	max-width: 25px;
+	min-width: 25px;
+}
+td
+{
+	padding: 0px;
+}
+caption
+{
+	text-align: center !important;
+}
+.titulo
+{
+	margin-left: 20px;
+	text-shadow:	1px 1px 3px white,
+					0 0 2em #7B7B7B,
+					0 0 0.2em #BDBDBD;
+}
+
+* input
+{
+	color: red;
+	width: 55px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: right;
+}
+.btn-lg
+{
+  font-size: 2.0em;
+  padding: 0px 5px;
+}
+.btn-info
+{
+	font-size: 2.0em !important;
+	padding: 5px  10px !important;
+	
+	background-color: #BD6E28 !important;
+	color: black !important;
+	border: outset 5px #BDBDBD !important;
+	border-radius: 10px !important;
+}
+.btn-info:hover
+{
+	border: inset 5px #BDBDBD !important;
+}
+.btn-info:active
+{
+	background-color: red !important;
+}
+.btn-info:focus
+{
+	background-color: red !important;
+}
+.titulo
+{
+  font-size: 2.0em;
+}
+
+/*--- Más estilos*/
+#fondo
+{
+	width: 100% !important;
+	height: 100% !important;
+	z-index: -1 !important;
+	position: fixed !important;
+	left: 0px !important;
+	top: 0px !important;
+}
+.ajustar
+{
+	width: 100% !important;
+	height: 100% !important;
+}
+.contenedorMenu, .contenedorMenu input
+{
+	color: #212D15;
+	background:			linear-gradient(135deg, rgba(224,255,224,1) 75%, rgba(0,0,0,0));
+	box-shadow:			inset -10px -10px 50px #BEF28B, 
+							inset 10px 10px 50px #BEF28B, 
+							10px 10px 50px #BEF28B;
+}
+.contenedorMenu button
+{
+	background:			linear-gradient(135deg, rgba(179,230,179,1) 75%, rgba(0,0,0,0));
+	box-shadow:			inset -10px -10px 50px #9FD966, 
+							inset 10px 10px 50px #9FD966, 
+							10px 10px 50px #9FD966;
+}
+#musicaIcono
+{
+  font-size: 1.2em;
+  padding: 0px 4px;
+}
