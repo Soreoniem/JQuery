@@ -14,7 +14,7 @@
 h1 {
 	color:			green;
     font-weight:	bold;
-    border-bottom:	groove 3px rgba(0,128,0,0.5);
+    border-bottom:	grooe 3px rgba(0,128,0,0.5);
 	margin-bottom:	5px;
 }
 h2{
@@ -29,12 +29,4 @@ h3{
     background-color:	rgba(0, 0, 0,0.03);
     border-top:			solid 1px whitesmoke;
     margin-top:			7px;
-}
-
-div{
-	border-radius: 3px;
-	width: 80%;
-}
-li{
-	text-align: left;
 }

@@ -1,0 +1,40 @@
+﻿/*▬▬▬▬▬[► BODY ◄]▬▬▬▬▬*/
+body{
+	padding-top: 25px;
+}
+
+/*▬▬▬▬▬[► MENU > Títulos ◄]▬▬▬▬▬*/
+.menuTitulo{
+	width:		20%;
+	position:	absolute;
+	top:		0px;
+	text-align:	center;
+	height:		25px;
+	
+	background-color: rgba(0, 0, 0, 0.7);
+	color: whitesmoke;
+	text-shadow:	1px 1px 3px gray;
+	box-shadow:	2px 1px 3px black;
+}
+	.menuTitulo:hover{
+		background-color: rgba(0, 0, 0, 0.9);
+	}
+
+/*▬▬▬▬▬[► MENU > Opciones ◄]▬▬▬▬▬*/
+.menuOpcion{
+	height:	25px;
+	
+	background-color:	rgba(0, 0, 0, 0.6);
+	color:	white;
+	text-shadow:	1px 1px 3px black;
+	
+}
+	.menuOpcion:hover{
+		cursor:pointer;
+	background-color:	rgba(0, 0, 0, 0.8);
+	}
+
+/*▬▬▬▬▬[► ETIQUETAS ◄]▬▬▬▬▬*/
+#etiquetas{
+	left: 20%;
+}

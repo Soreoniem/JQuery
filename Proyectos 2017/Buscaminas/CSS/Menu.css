@@ -1,0 +1,105 @@
+﻿/*
+	╔═══════════════════╗
+	║   Configuración   ║
+	╚═══════════════════╝
+*/
+
+	#configuracion{
+		width:		50px;
+		height:		50px;
+		position:	absolute;
+		right:		0px;
+		top:		0px;
+		
+		background-image:		url("../Imgs/Angry Birds/AngyBirds 1.png");
+		background-repeat:		no-repeat;
+		background-size:		auto 50px;
+		background-position:	center;
+		
+		transition: top 0.75s ease;
+	}
+
+		#configuracion:hover{
+			animation-name:				configuracionBotonMenu;
+			animation-delay:			0s;
+			animation-duration:			1s;
+			animation-fill-mode:		forwards;
+			animation-timing-function:	steps(60);
+		}
+
+			@keyframes configuracionBotonMenu
+			{
+				0%{
+					background-image:	url("../Imgs/Angry Birds/AngyBirds 1.png");
+				}
+				33%{
+					background-image:	url("../Imgs/Angry Birds/AngyBirds 6.png");
+				}
+				67%{
+					background-image:	url("../Imgs/Angry Birds/AngyBirds 7.png");
+				}
+				100%{
+					background-image:	url("../Imgs/Angry Birds/AngyBirds 8.png");
+				}
+			}
+
+/*
+	╔══════════════════════════╗
+	║   Configuración → Menú   ║
+	╚══════════════════════════╝
+*/
+	#menu{
+		background-color:	rgba(0, 0, 0, 0.1);
+		
+		position:	fixed;
+		right:		0px;
+		z-index:	10;
+		
+		width:		100%;
+		height:		100%;
+		
+		transition:	width 0.75s ease;
+	}
+
+	#menu_izquierda{
+		background-color:	rgba(192, 0, 0, 0.3);
+		
+		float:		right;
+		width:		66%;
+		height: 	Calc(100% - 50px);
+		
+		margin-top:	50px;
+		overflow:	auto;
+	}
+	
+	#menu_izquierda h2{
+		/*
+			Altura = altura(40px) + padding(10px) = 50px
+				(calculado manualmente)
+			Letra:	32px
+		*/
+		width:			Calc(100% - 50px);
+		height:			Calc(50px - 10px);
+		float:			left;
+		
+		font-family:	Buscaminas_titulo;
+		font-size:		32px;
+		text-align:		center;
+		font-weight:	normal;
+		
+		padding-top:	10px;
+	}
+
+/*
+	╔══════════════════════════════════════════════╗
+	║   Configuración → Menú → Columna izquierda   ║
+	╚══════════════════════════════════════════════╝
+*/
+
+	.menu_fila{
+		background-color:	rgba(255, 255, 255, 0.5);
+		
+		width:	100%;
+		height:	Calc(100% - 50px);
+		float:	left;
+	}
