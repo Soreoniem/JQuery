@@ -1,4 +1,11 @@
 ﻿var vg_menu_abrir;
+var v_menu_html_config = [
+	["titulo",		"Sonido"],
+	["boleano",		"campo1",	"identificador1"],
+	["titulo",		"Tablero"],
+	["boleano",		"campo 2",	"identificador2"],
+	["numerico",	"Campo 3",	"identificador3"]
+];
 
 $(document).ready(function(){
 	// iniciar la configuración del menú
@@ -124,16 +131,21 @@ function f_menu_iniciar(){
 
 // Añadir el html del menú
 function f_menu_añadirMenu(){
-	/*	Cambiar estilo
+	/* Usar en HTML en vez de aquí
+		Comentar todo hasta donde pone: //▬▬▬▬▬[ COMENTAR HASTA AQUÍ ]▬▬▬▬▬
 		
-		Añade alguna de estas clases a la fila derecha: (class="menu_fila_der" ► class="menu_fila_der menu_conf_activar")
+		Recomiendo ejecutar una vez el projecto y copiar directamente del navegador al html
+		Añade alguna de las clases al lado de la clase "menu_fila_der":
 			menu_conf_activar
 			menu_conf_numerico
 		
-		menu_conf_activar:	Pone ub botón boleano (si / no)
-		menu_conf_numerico:	Añade 2 flechas: Izquierda (◄) para reducir y Derecha (►) para aumentar el número
+		quedaría: class="menu_fila_der menu_conf_activar"
+		
+		Y el subtítulo deberás ponerlo manualmente (copiar, pegar, etc. )
+			dentro de .menu_contenedor
+			y no dentro de la fila
 	*/
-	// Puedes crear el menú así o tenerlo puesto en el html
+	
 	/*
 		Atributos (class e id):
 			• Necesarios:
@@ -148,53 +160,77 @@ function f_menu_añadirMenu(){
 				.menu_fila			Necesaria para crear una nueva fíla
 				.menu_fila_izq		Parte izquierda (información)
 				.menu_fila_der		Parte derecha	(edición)
-				#identificador1		Aconsejo poner aquí el identificador
-					la sentencia jquery sería: $("#identificador .dato")
-				
+				#identificador		Identificador de la fila
 	*/
-	$("body").append(
+	
+	// Primera parte del menú
+	var v_menu_html = 
 		"<div id=\"configuracion\"></div>"+
 		"<div id=\"menu\">"+
 			"<div id=\"menu_izquierda\">"+
 				"<h2>Menu</h2>"+
-				"<div class=\"menu_contenedor\">"+
-					
-					"<div class=\"menu_subtitulo\">Sonido</div>"+
-					"<div id=\"identificador1\" class=\"menu_fila\">"+
-						"<div class=\"menu_fila_izq\">Sonido</div>"+
-						
-						"<div class=\"menu_fila_der menu_conf_activar\"></div>"+
-					
-					"</div>"+
-					
-					"<div id=\"identificador2\" class=\"menu_fila\">"+
-						"<div class=\"menu_fila_izq\">Sonido 2</div>"+
-						"<div class=\"menu_fila_der menu_conf_activar\"></div>"+
-					"</div>"+
-					
-					"<div class=\"menu_subtitulo\">Tablero</div>"+
-					"<div id=\"identificador3\" class=\"menu_fila\">"+
-						"<div class=\"menu_fila_izq\">Anchura</div>"+
-					
-						"<div class=\"menu_fila_der menu_conf_numerico\"></div>"+
-					
-					"</div>"+
-					"<div id=\"identificador4\" class=\"menu_fila\">"+
-						"<div class=\"menu_fila_izq\">Altura</div>"+
-						
-						"<div class=\"menu_fila_der menu_conf_numerico\"></div>"+
-					"</div>"+
+				"<div class=\"menu_contenedor\">"
+	;
+	
+	/* Cómo añadir datos (Array de Arrays = Matríz)
+		Hueco 1 (tipo):	"titulo", "boleano", "numerico"
+		Hueco 2	(nombre):	"Mi título", "mi campo"
+		
+		Si no son títulos:
+		Hueco 3	(identificadores):	"id_de_la_Fila"
+			• Sirve para poner un identificador a la fila.
+			• La sentencia jquery para recuperar el dato sería:
+				Boleano:	$("#identificador .boton").attr("activado");
+				Numerico:	$("#identificador .dato");
+	*/
+	
+	// Según el array crea el menú
+	for( var i=0 ; i<v_menu_html_config.length ; i++ ){
+		
+		// Si es un título
+		if( v_menu_html_config[i][0] == "titulo" ){
+			v_menu_html = v_menu_html + "<div class=\"menu_subtitulo\">"+ v_menu_html_config[i][1] +"</div>";
+		
+		} else {
+			// Si no es un título es una fila
+			
+			// Iniciar div de fila
+			v_menu_html = v_menu_html +
+				"<div id=\""+ v_menu_html_config[i][2] +"\" class=\"menu_fila\">"+
+					"<div class=\"menu_fila_izq\">"+ v_menu_html_config[i][1] +"</div>"
+			;
+			
+			// Si es de tipo boleano
+			if( v_menu_html_config[i][0] == "boleano" ){
+				v_menu_html = v_menu_html + "<div class=\"menu_fila_der menu_conf_activar\"></div>";
+			
+			// Si es de tipo numerico
+			} else if( v_menu_html_config[i][0] == "numerico" ){
+				v_menu_html = v_menu_html + "<div class=\"menu_fila_der menu_conf_numerico\"></div>";
+			}
+			
+			// Cerramos el div de fila
+			v_menu_html = v_menu_html + "</div>";
+		}
+	}
+	// Cierre del menú
+	v_menu_html = v_menu_html +			
 				"</div>"+
 			"</div>"+
 		"</div>"
-	);
+	;
+	
+	// Por último se añade el html al body
+	$("body").append(v_menu_html);
+	
+	//▬▬▬▬▬[ COMENTAR HASTA AQUÍ ]▬▬▬▬▬
 	
 	// Estructura html según la clase
 	
 	// Activar (.menu_conf_activar)	añade 2 divs (sombra y bolita)
 	// Añade el atributo "activado"
 		// Si cambias el atributo: Ves a la función: f_menu_evento_activar
-	$(".menu_conf_activar").append("<div><div></div></div>");
+	$(".menu_conf_activar").append("<div><div class=\"boton\"></div></div>");
 	$(".menu_conf_activar div div").attr("activado", "no");
 	
 	// Numerico (.menu_conf_numerico) crea 3 divs (flecha ◄, número(dato), flecha ►)
