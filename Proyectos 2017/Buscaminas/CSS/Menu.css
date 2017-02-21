@@ -8,7 +8,7 @@
 		width:		50px;
 		height:		50px;
 		position:	absolute;
-		right:		0px;
+		right:		15px;
 		top:		0px;
 		
 		background-image:		url("../Imgs/Angry Birds/AngyBirds 1.png");
@@ -96,10 +96,114 @@
 	╚══════════════════════════════════════════════╝
 */
 
-	.menu_fila{
+	.menu_contenedor{
 		background-color:	rgba(255, 255, 255, 0.5);
 		
 		width:	100%;
 		height:	Calc(100% - 50px);
 		float:	left;
+	}
+	
+	.menu_subtitulo{
+		background-color:	rgba(0, 0, 0, 0.5);
+		
+		width:		100%;
+		float:	left;
+		
+		padding: 3px 0px;
+		
+		font-size:		1.3em;
+		letter-spacing:	0.2em;
+		text-align:		center;
+	}
+		.menu_subtitulo:not(:first-of-type){
+			margin-top:	13px;
+			border-radius: 7px 7px 0px 0px;
+		}
+	.menu_fila{
+		float:	left;
+		width:	100%;
+	}
+	
+	.menu_fila_izq,
+	.menu_fila_der{
+		width:	49%;
+		
+		padding:	13px 0px;
+	}
+	.menu_fila_izq{
+		background-color:	rgba(128, 255, 64, 0.2);
+		padding:	13px 0px;
+		
+		float:	left;
+		font-size:	16px;
+		text-align:	right;
+	}
+	.menu_fila_der{
+		background-color:	rgba(128, 64, 255, 0.2);
+		
+		float:	right;
+	}
+	
+	.menu_conf_activar div{
+		background-color:	rgba(0, 0, 128, 0.3);
+		
+		width:			20%;
+		height:			16px;
+		margin-left:	Calc((100% - 20%) /2);
+		/* Height /2 */
+		border-radius:	8px;
+	}
+	.menu_conf_activar div div{
+		background-color:	rgba(0, 0, 255, 0.5);
+		
+		width:	35%;
+		height:	100%;
+		
+		border-radius:	8px;
+		margin-left:	5%;
+		
+		transition: margin 0.45s ease-out;
+	}
+	
+	.menu_conf_numerico{
+		background-color:	rgba(0, 0, 128, 0.3);
+		
+		text-align:	center;
+	}
+	
+	.menu_conf_numerico div{
+		float:	left;
+	}
+	
+	.menu_conf_numerico_mas,
+	.menu_conf_numerico_menos{
+		width:					16px;
+		height:					16px;
+		
+		background-image:		url("../Imgs/flecha/flecha.png");
+		background-repeat:		no-repeat;
+		background-size:		16px auto;
+		background-position:	center;
+	}
+	
+		.menu_conf_numerico_mas:hover,
+		.menu_conf_numerico_menos:hover{
+			background-image:		url("../Imgs/flecha/flecha hover.png");
+		}
+		
+		.menu_conf_numerico_mas:active,
+		.menu_conf_numerico_menos:active{
+			background-image:		url("../Imgs/flecha/flecha active.png");
+		}
+		
+	.menu_conf_numerico_menos{
+		margin-right:	1%;
+		transform:		rotate(90deg);
+		
+		margin-left:	Calc(50% - 24px);
+	}
+	.menu_conf_numerico_mas{
+		margin-left:	1%;
+		transform:		rotate(-90deg);
 	}
