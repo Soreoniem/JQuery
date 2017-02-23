@@ -1,10 +1,13 @@
 ﻿var vg_menu_abrir;
 var v_menu_html_config = [
 	["titulo",		"Sonido"],
-	["boleano",		"campo1",	"identificador1"],
+	["boleano",		"Sonido",	"menu_sonido"],
+	
 	["titulo",		"Tablero"],
-	["boleano",		"campo 2",	"identificador2"],
-	["numerico",	"Campo 3",	"identificador3"]
+	["numerico",	"Anchura",	"menu_anchura"],
+	["numerico",	"Altura",	"menu_altura"],
+	["numerico",	"Dificultad (%)",	"menu_dificultad"],
+	["confirmar",	"Aplicar",	"menu_aceptar"]
 ];
 
 $(document).ready(function(){
@@ -195,18 +198,34 @@ function f_menu_añadirMenu(){
 			// Si no es un título es una fila
 			
 			// Iniciar div de fila
-			v_menu_html = v_menu_html +
-				"<div id=\""+ v_menu_html_config[i][2] +"\" class=\"menu_fila\">"+
-					"<div class=\"menu_fila_izq\">"+ v_menu_html_config[i][1] +"</div>"
-			;
+			v_menu_html = v_menu_html +"<div id=\""+ v_menu_html_config[i][2] +"\" class=\"menu_fila\">";
 			
-			// Si es de tipo boleano
-			if( v_menu_html_config[i][0] == "boleano" ){
-				v_menu_html = v_menu_html + "<div class=\"menu_fila_der menu_conf_activar\"></div>";
+			var v_menu_conf_tipo = "";
 			
-			// Si es de tipo numerico
-			} else if( v_menu_html_config[i][0] == "numerico" ){
-				v_menu_html = v_menu_html + "<div class=\"menu_fila_der menu_conf_numerico\"></div>";
+			switch(v_menu_html_config[i][0]){
+				case "boleano":		v_menu_conf_tipo = "activar"; break;
+				case "numerico":	v_menu_conf_tipo = "numerico"; break;
+				case "confirmar":	v_menu_conf_tipo = "confirmar"; break;
+			}
+			
+			switch(v_menu_html_config[i][0]){
+				// Filas de 1 caja
+				case "confirmar":
+					v_menu_html = v_menu_html +
+						"<div class=\"menu_fila_entera menu_conf_"+ v_menu_conf_tipo +"\">"+
+							"<button>"+ v_menu_html_config[i][1] +"</button>"+
+						"</div>"
+					;
+					break;
+				
+				// Filas de 2 cajas (nombre y configuración)
+				case "boleano":
+				case "numerico":
+					v_menu_html = v_menu_html +
+						"<div class=\"menu_fila_izq\">"+ v_menu_html_config[i][1] +"</div>"+
+						"<div class=\"menu_fila_der menu_conf_"+ v_menu_conf_tipo +"\"></div>"
+					;
+					break;
 			}
 			
 			// Cerramos el div de fila

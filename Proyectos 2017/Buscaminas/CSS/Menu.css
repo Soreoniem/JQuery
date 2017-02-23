@@ -125,6 +125,22 @@
 		width:	100%;
 	}
 	
+	.menu_fila_entera{
+		background-color:	rgba(255, 64, 0, 0.2);
+		width:	100%;
+		
+		text-align:	center;
+	}
+	
+	.menu_conf_confirmar button{
+		height:			30px;
+		padding:		0px 16px;
+		margin:			7px 0px;
+		
+		font-size:		16px;
+		border-radius:	10px;
+	}
+	
 	.menu_fila_izq,
 	.menu_fila_der{
 		width:	49%;
@@ -132,7 +148,7 @@
 		padding:	13px 0px;
 	}
 	.menu_fila_izq{
-		background-color:	rgba(128, 255, 64, 0.2);
+		background-color:	rgba(64, 255, 64, 0.2);
 		padding:	13px 0px;
 		
 		float:	left;
@@ -140,7 +156,7 @@
 		text-align:	right;
 	}
 	.menu_fila_der{
-		background-color:	rgba(128, 64, 255, 0.2);
+		background-color:	rgba(64, 64, 255, 0.2);
 		
 		float:	right;
 	}
