@@ -1,0 +1,22 @@
+﻿var imagenes = {
+	"1":			".\\Imgs\\1.png",
+	"2":			".\\Imgs\\2.png",
+	"3":			".\\Imgs\\3.png",
+	"4":			".\\Imgs\\4.png",
+	"5":			".\\Imgs\\5.png",
+	"6":			".\\Imgs\\6.png",
+	"7":			".\\Imgs\\7.png",
+	"8":			".\\Imgs\\8.png",
+	"bandera":		".\\Imgs\\bandera.png",
+	"ganador":		".\\Imgs\\caraGanador.png",
+	"hay":			".\\Imgs\\caraHay.png",
+	"inicial":		".\\Imgs\\caraInicial.png",
+	"Ooh":			".\\Imgs\\caraOoh.png",
+	"perdedor":		".\\Imgs\\caraPerdedor.png",
+	"fondo":		".\\Imgs\\fondo.jpg",
+	"mina":			".\\Imgs\\mina.png",
+	"minaClick":	".\\Imgs\\minaClick.png",
+	"minaOK":		".\\Imgs\\minaOK.png",
+	"nada":			".\\Imgs\\nada.png",
+	"normal":		".\\Imgs\\normal.png"
+}

@@ -5,6 +5,16 @@
 	margin: 0px;
 	font-family:		Buscaminas_letra, monospace;
 }
+
+#buscaminas{
+	float:	left;
+	width:	100%;
+}
+
+table{
+	border-collapse:	collapse;
+}
+
 .padre{
 	background-color:	rgba(0, 0, 0, 0.1);
 }

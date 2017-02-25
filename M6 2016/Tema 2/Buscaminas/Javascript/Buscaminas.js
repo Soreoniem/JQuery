@@ -215,8 +215,7 @@ function añadirBomba()
 	8% → fácil
 */
 	// aleatorio de 1 a 100 = ((0→99) +1)
-	// var aleatorio = parseInt(Math.round(Math.random() * (100 - 1) + 1));
-	var aleatorio = parseInt(Math.round(Math.random() * (80 - 1) + 1));
+	var aleatorio = parseInt(Math.round(Math.random() * (100 - 1) + 1));
 	
 	if( 1<=aleatorio && aleatorio<=dificultad )
 	{

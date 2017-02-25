@@ -580,7 +580,6 @@ imprimirArray	= function( arrayDatos, modo, titulo ){
 				for( var y=0 ; y<(((arrayDatos.length -1) +"").length - (x +"").length)  ; y++ ){
 					imprimir	= imprimir + espacio;
 				}
-				
 				imprimir = imprimir + x +" [►"+ arrayDatos[x] +"◄]";
 			}
 		}
