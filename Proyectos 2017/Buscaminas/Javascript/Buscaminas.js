@@ -1,4 +1,4 @@
-﻿var unaVez = true;
+﻿document.oncontextmenu = function(){return false;}
 /*
 	• Detector por sonido
 */
@@ -19,27 +19,225 @@ var v_buscaminas_minas_aseguradas	= 0;
 
 var v_buscaminas_banderas			= 0;
 
-var v_buscaminas_estado			= "jugar";	// jugar, ganar, perder
+var v_buscaminas_estado				= "jugar";	// jugar, ganador, perdedor
+var v_buscaminas_sonido_activado	= "si";
 
 $(document).ready(function(){
 	f_buscaminas_configuracion_inicial();
-	// LOOL: Crear evento aceptar en el menú (crear buscaminas y tamaño: reemplazar buscaminas actual)
-	// actualizar info y reemplazar buscaminas
+	
 	f_buscaminas();
+	
+	//Menú ► Aceptar
+	$("#menu_aceptar button").mousedown(f_buscaminas_menu_aceptar);
 });
+
+function f_buscaminas_menu_aceptar(){
+	// Obtener los datos del menú
+	// Actualizar los datos del buscaminas
+	v_buscaminas_sonido_activado	= $("#menu_sonido .boton").attr("activado");
+	v_buscaminas_anchura			= parseInt($("#menu_anchura .dato").text());
+	v_buscaminas_altura				= parseInt($("#menu_altura .dato").text());
+	v_buscaminas_dificultad			= parseInt($("#menu_dificultad .dato").text());
+	
+	// Cerrar el menú
+	f_menu_abrirCerrar();
+	
+	// Crear el nuevo buscaminas
+	f_buscaminas();
+}
 
 // Crea un nuevo juego de Buscaminas con los parametros actuales
 function f_buscaminas(){
-	
-	// Prepara las variables como el tablero (matriz)
 	f_buscaminas_datos_crear();
 	
 	f_buscaminas_datos_añadir();
 	// Crear tablas
 	f_buscaminas_mostrar_tabla();
 	
+	f_buscaminas_eventos();
+	
 	// Añadir datos
 	// Jugar
+}
+
+function f_buscaminas_eventos(){
+	$("#buscaminas td").mousedown(function(e){
+		// Click Derecho
+		if(e.which == 3){
+			f_buscaminas_eventos_clickDerecho($(this));
+		
+		// Click Izquierdo
+		} else if(e.which == 1) {
+			f_buscaminas_eventos_clickIzquierdo($(this));
+		}
+	});
+}
+
+// Click Izquierdo a una casilla
+function f_buscaminas_eventos_clickIzquierdo(p_objeto){
+	// Información para los tableros
+	var img_x	= parseInt(p_objeto.attr("x"));
+	var img_y	= parseInt(p_objeto.attr("y"));
+	var datoTablero	= v_buscaminas_tablero_datos[img_y -1][img_x -1];
+	var datoArea	= v_buscaminas_tablero_areas[img_y -1][img_x -1];
+	
+	// Información html
+	var img_tag	= p_objeto.find("img");
+	var img_src	= img_tag.attr("src");
+	
+	
+	// Click ► No bandera
+	if( img_src == imagenes["normal"] ){
+		// Click ► Bomba
+		if( datoTablero == -1 ){
+			f_buscaminas_perdedor(p_objeto);
+		
+		// Click ► Número
+		} else if( datoTablero != 0 ){
+			// Revelar solo el número
+			p_objeto.find("img").attr("src", imagenes[datoTablero.toString()])
+		
+		// Si no es bomba o número es una area vacía
+		// Por lo que se debe revelar las casillas por area
+		} else {
+			// Recorre el tablero
+			for( var y=0 ; y<v_buscaminas_altura ; y++ ){
+				for( var x=0 ; x<v_buscaminas_anchura ; x++ ){
+					
+					// El area coincide con el mismo la que se la pulsado (click)
+					if( v_buscaminas_tablero_areas[y][x] == datoArea ){
+						
+						// Obtiene el <td> según la x y la y
+						var objetoActual = $("[y="+ (y +1) +"][x="+ (x +1) +"]");
+						
+						// Si en ese <td> tiene el dato 0 es que no hay nada (no hay números)
+						if( v_buscaminas_tablero_datos[y][x] == 0 ){
+							objetoActual.find("img").attr("src", imagenes["nada"]);
+						
+						// Si pasa por aquí es que hay algún número.
+						// Nota: Como las imagenes son números puedo usar la variable del tablero de los datos.
+						} else {
+							objetoActual.find("img").attr("src", imagenes[v_buscaminas_tablero_datos[y][x].toString()]);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Click Derecho a una casilla
+function f_buscaminas_eventos_clickDerecho(p_objeto){
+	// Información para los tableros
+	var img_x	= parseInt(p_objeto.attr("x"));
+	var img_y	= parseInt(p_objeto.attr("y"));
+	var datoTablero	= v_buscaminas_tablero_datos[img_y -1][img_x -1];
+	
+	// Información html
+	var img_tag	= p_objeto.find("img");
+	var img_src	= img_tag.attr("src");
+	
+	//*	[_• PRUEBAS (1/2) •_] LOOL: Quitar al terminar el juego
+	console.clear();
+	console.log(
+		"_Antes_"
+		+"\n"+ v_buscaminas_banderas +" Banderas."
+		+"\n"+ v_buscaminas_minas_aseguradas +" Minas seguras."
+		+"\n"+ v_buscaminas_minas_total +" Minas total."
+	);
+	// */
+	
+	// Click Derecho ► Normal
+	if( img_src == imagenes["normal"] ){
+		// Quedan banderas
+		if( v_buscaminas_banderas > 0 ){
+			
+			// Cambia la imagen
+			p_objeto.find("img").attr("src", imagenes["bandera"]);
+			
+			// reduce la cantidad de banderas
+			v_buscaminas_banderas--;
+			
+			// Si hay una bomba se marca como segura (minas aseguradas +1)
+			if( datoTablero == -1 ){
+				// Si hay una mina la asegura
+				v_buscaminas_minas_aseguradas++;
+				
+				if( v_buscaminas_minas_aseguradas == v_buscaminas_minas_total ){
+					f_buscaminas_ganador();
+				}
+			}
+		}
+		// Si no hay banderas no hace nada
+	
+	// Click Derecho ► Bandera
+	} else if( img_src == imagenes["bandera"] ) {
+		// Cambia la imagen
+		p_objeto.find("img").attr("src", imagenes["normal"])
+		
+		// Recoge la bandera
+		v_buscaminas_banderas++;
+		
+		// Si hay una mina
+		if( datoTablero == -1 ){
+			v_buscaminas_minas_aseguradas--;
+		}
+	}
+	
+	//*	[_• PRUEBAS (2/2) •_]
+	console.log(
+		"_Después_"
+		+"\n"+ v_buscaminas_banderas +" Banderas."
+		+"\n"+ v_buscaminas_minas_aseguradas +" Minas seguras."
+		+"\n"+ v_buscaminas_minas_total +" Minas total."
+	);
+	// */
+}
+function f_buscaminas_perdedor(p_objeto){
+	v_buscaminas_estado = "perdedor";
+	// Cambiar la cara
+	$("#buscaminas caption img").attr("src", imagenes["perdedor"]);
+	$("#buscaminas tbody td").each(function(){
+		var e_objeto = $(this);
+		
+		// Información para los tableros
+		var img_x	= parseInt(e_objeto.attr("x"));
+		var img_y	= parseInt(e_objeto.attr("y"));
+		var datoTablero	= v_buscaminas_tablero_datos[img_y -1][img_x -1];
+		
+		if( datoTablero == -1 ){
+			e_objeto.find("img").attr("src", imagenes["mina"]);
+		
+		} else if( datoTablero == 0 ) {
+			e_objeto.find("img").attr("src", imagenes["nada"]);
+		} else {
+			e_objeto.find("img").attr("src", imagenes[datoTablero.toString()]);
+		}
+	});
+	
+	p_objeto.find("img").attr("src", imagenes["minaClick"]);
+}
+function f_buscaminas_ganador(){
+	v_buscaminas_estado = "ganador";
+	// Cambiar la cara
+	$("#buscaminas caption img").attr("src", imagenes["ganador"]);
+	$("#buscaminas tbody td").each(function(){
+		var e_objeto = $(this);
+		
+		// Información para los tableros
+		var img_x	= parseInt(e_objeto.attr("x"));
+		var img_y	= parseInt(e_objeto.attr("y"));
+		var datoTablero	= v_buscaminas_tablero_datos[img_y -1][img_x -1];
+		
+		if( datoTablero == -1 ){
+			e_objeto.find("img").attr("src", imagenes["minaOK"]);
+		
+		} else if( datoTablero == 0 ) {
+			e_objeto.find("img").attr("src", imagenes["nada"]);
+		} else {
+			e_objeto.find("img").attr("src", imagenes[datoTablero.toString()]);
+		}
+	});
 }
 
 function f_buscaminas_mostrar_tabla(){
@@ -62,7 +260,7 @@ function f_buscaminas_mostrar_tabla(){
 		"</table>"
 	;
 	
-	$("#buscaminas").append(tabla);
+	$("#buscaminas").html(tabla);
 }
 
 // Añade la información a los tableros
@@ -254,6 +452,8 @@ function f_buscaminas_obtener_tablero_info_alrededor(p_tablero, p_y, p_x){
 // 2. Aumentar el número en cada dirección (8 direcciones)
 // 2.1. No aumentar si hay una bomba (bomba: -1)
 function f_buscaminas_datos_añadir_numeros(p_tablero){
+	// Reiniciar la variable
+	v_buscaminas_minas_total = 0;
 	// Tablero
 	var infoAlrededor;
 	for( var y=0 ; y<v_buscaminas_altura ; y++ ){
@@ -284,7 +484,18 @@ function f_buscaminas_datos_añadir_numeros(p_tablero){
 			}
 		}
 	}
+	
+	// No se ha introducido ninguna mina
+	// Pondré mínimo 1
+	if( v_buscaminas_minas_total == 0 ){
+		p_tablero[aleatorio(0, v_buscaminas_altura -1)][aleatorio(0, v_buscaminas_anchura -1)] = -1;
+		v_buscaminas_minas_total++;
+	}
 	v_buscaminas_banderas	= v_buscaminas_minas_total;
+	
+	// Añade banderas adicionales de 1 bandera a 3% extra de banderas de forma aleatoria
+	// Evita que puedas saber el número e banderas poniendo todas y luego quitarlas
+	v_buscaminas_banderas	= v_buscaminas_banderas + aleatorio(1, (10*10) *0.03);
 }
 
 // La coordenada la pueden pasar por número o por frase
@@ -374,12 +585,12 @@ function f_buscaminas_datos_crear(){
 // Crea la plantilla de los tableros
 function f_buscaminas_obtener_tablero_vacio(){
 	
-	// creamos la anchura del tablero
-	var tablero = new Array(v_buscaminas_anchura);
+	// creamos la altura del tablero (filas)
+	var tablero = new Array(v_buscaminas_altura);
 	
 	// y ahora las filas
 	for( var y=0 ; y<v_buscaminas_altura ; y++ ){
-		tablero[y]	= new Array(v_buscaminas_altura);
+		tablero[y]	= new Array(v_buscaminas_anchura);
 	}
 	
 	// Devolvemos el tablero creado vacío

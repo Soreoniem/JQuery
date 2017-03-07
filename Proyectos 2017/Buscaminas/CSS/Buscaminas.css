@@ -14,6 +14,9 @@
 table{
 	border-collapse:	collapse;
 }
+td, th{
+	padding: 0px;
+}
 
 .padre{
 	background-color:	rgba(0, 0, 0, 0.1);
