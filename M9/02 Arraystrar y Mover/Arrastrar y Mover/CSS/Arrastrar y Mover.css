@@ -1,0 +1,160 @@
+﻿/* [_► Posicionamiento ◄_]
+	relative = se mueve por su alrededor
+	absolute = se mueve por su alrededor quitanfo el flujo
+	fixed = se mueve por la ventana
+	
+	float = flotar a algún lado del padre;
+*/
+
+/* [_► Transiciones ◄_]
+	► Css afectado
+		transition-property: width;
+	
+	► Duración
+		transition-duration: 2s;
+	
+	► Tipo
+		transition-timing-function: linear;
+	
+	► Restraso
+		transition-delay: 1s;
+	
+	◄► Completo: (property, duration, timing-function, delay)
+		transition:	width 2s ease 1s;
+*/
+/* [_► Animaciones ◄_]
+	
+	► Retraso (timepo) (w3schools.com/cssref/css3_pr_animation-delay.asp)
+		animation-delay: .5s, 0s;
+	
+	► Duración (w3schools.com/cssref/css3_pr_animation-duration.asp)
+		animation-duration: 5s, 1s;
+
+	► Nombre (w3schools.com/cssref/css3_pr_animation-name.asp)
+		animation-name: caer, girarY;
+
+	► Mantener el final de la animación (www.w3schools.com/cssref/css3_pr_animation-fill-mode.asp)
+		animation-fill-mode: forwards;
+	
+	► Cuantas veces (www.w3schools.com/cssref/css3_pr_animation-iteration-count.asp)
+		animation-iteration-count: infinite, infinite;
+	
+	► FPS (www.w3schools.com/cssref/css3_pr_animation-timing-function.asp)
+		animation-timing-function: steps(200), linear;
+			30s =   1	fps
+			.5s =   60	fps
+			.3s =	100	fps
+		   ---
+			calculo:
+			7224 /24 = 301
+			(300 +1) *24 frames = 7224
+	
+	► Completo
+		animation: girarY 1s steps(60) infinite;
+	
+	► Llamada
+		@keyframes sprite{
+			100%{
+				background-position: -7224px;
+			}
+		}
+*/
+/* [_► Degradados ◄_]
+	background:	linear-gradient(135deg, rgba(0,0,0,0) 20%, red);
+				linear-gradient
+				radial-gradient
+					radial-gradient(circle, ...)
+					(probar: exactamente no se lo que hacen)
+					radial-gradient(closest-side at 60% 55%) encoger dentro
+					radial-gradient(farthest-side at 60% 55%) estirar dentro
+					radial-gradient(farthest-corner at 60% 55%) estirar dentro
+				repeating-linear-gradient
+	
+*/
+/* [_► Fuente propia ◄_]
+	
+	@font-face {
+		font-family: Minecraft;
+		src: url("/recursos/fuentes/Minecrafter.Alt.ttf");
+	}
+*/
+																	/*
+		  ╔════════════╗
+		  ║   TÍTULO   ║
+	┌──╦┐ ╠────────────╣ ┌╦───────────────────────────────────────┐
+	│  ╚══╝            ╚══╝                                       │
+	│ Mensaje . . .                                               │
+	└─────────────────────────────────────────────────────────────┘ */
+*{
+	margin:		0px;
+	padding:	0px;
+}
+
+html{
+	background-color:	rgb(224, 236, 0);
+}
+
+#caja{
+	position: relative;
+    width: 50%;
+    left: 25%;
+    top: 25%;
+	min-height:	50px;
+}
+
+.imgFlecha,
+.imgCirculo,
+.lineas{
+	position:	absolute;
+}
+
+.imgFlecha{
+	z-index:	3;
+	left:		0%;
+	
+	width:		60px;
+	height:		60px;
+	background-image:	url("../Imgs/drag.png");
+	background-repeat:	no-repeat;
+	margin-left:	-30px;
+}
+
+.imgFlecha:hover{
+	cursor:	w-resize;
+}
+
+.imgCirculo{
+	z-index:	2;
+	left:		100%;
+	top:		15px;
+	
+	width:		30px;
+	height:		30px;
+	background-image:	url("../Imgs/drop.png");
+	background-repeat:	no-repeat;
+	margin-left:		-15px;
+}
+.lineas{
+	
+    background: linear-gradient(90deg, white 50%, transparent 50%);
+    background-size: 15px 4px;
+    background-position: 0px 0px;
+	
+	z-index:	1;
+	top:	50%;
+	right:	0px;
+	
+	height:	4px;
+	width:	100%;
+	margin-top:	2px;
+	animation-duration:	1s;
+	animation-name:		bordeMover;
+	/*animation-fill-mode: forwards;*/
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+	@keyframes bordeMover{
+		100%{
+			background-position: 15px 0px;
+		}
+	}

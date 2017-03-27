@@ -293,6 +293,41 @@ function f_buscaminas_datos_añadir_areas(){
 			infoAlrededor_datos	= f_buscaminas_obtener_tablero_info_alrededor(v_buscaminas_tablero_datos, y, x);
 			infoAlrededor_areas	= f_buscaminas_obtener_tablero_info_alrededor(v_buscaminas_tablero_areas, y, x);
 			
+			//*
+			// Si el dato central está vacío (casilla vacía)
+			if( infoAlrededor_datos[5] == 0 ){
+				// Almacen de areas encontradas
+				var areas_encontradas = [];
+				// Comprobar si hay algún area asignada alrededor
+				for( var i=1 ; i<infoAlrededor_areas.length ; i++ ){
+					// NOTA: Evita el 0 que es un string
+					
+					// Solo compruebo si hay datos alrededor (evito los datos: null y  i:5)
+					if( infoAlrededor_areas[i] != null
+						&& i != 5){
+						if( infoAlrededor_areas[i] != 0 ){
+							
+							areas_encontradas.push(infoAlrededor_areas[i]);
+						}
+					}
+				}
+				
+				// Si hay algun area alrededor ya la habría asignado
+				// Si es un area vacía y no hay alrededor ninguna area quiere decir que es un area nueva
+				if( infoAlrededor_areas[5] == 0 ){
+					// 0: Area no asignada
+					// Añadir nueva area
+					// Actualizar:
+						// • Areas		→ Casilla central
+						// • Variable	→ Areas alrededor
+						// • Variable	→ areas + 1
+					f_buscaminas_insertar_tablero_dato_enCoordenada(v_buscaminas_tablero_areas, y, x, 5, areas);
+					infoAlrededor_areas[5] = areas;
+					areas++;
+				}
+			}
+			// */
+			/*
 			// Identificar hay una zona vacía
 			if( infoAlrededor_datos[5] == 0 ){
 				// No se le ha asignado area
@@ -345,7 +380,7 @@ function f_buscaminas_datos_añadir_areas(){
 						}
 					}
 				}
-			}
+			}// */
 		}
 	}
 }

@@ -5,7 +5,6 @@
 	
 	float = flotar a algún lado del padre;
 */
-
 /* [_► Transiciones ◄_]
 	► Css afectado
 		transition-property: width;
@@ -40,7 +39,7 @@
 		animation-iteration-count: infinite, infinite;
 	
 	► FPS (www.w3schools.com/cssref/css3_pr_animation-timing-function.asp)
-		animation-timing-function: steps(200), linear;
+		animation-timing-function: steps(200), steps(60);
 			30s =   1	fps
 			.5s =   60	fps
 			.3s =	100	fps
@@ -78,6 +77,11 @@
 		src: url("/recursos/fuentes/Minecrafter.Alt.ttf");
 	}
 */
+/* [_• Pulsaciones •_]
+	► Key Press
+		NOTA: Sustituir en el código: $("input") → $("*") para ver el úmero de la tecla
+		w3schools.com/jquery/tryit.asp?filename=tryjquery_event_which
+*/
 																	/*
 		  ╔════════════╗
 		  ║   TÍTULO   ║
@@ -85,72 +89,27 @@
 	│  ╚══╝            ╚══╝                                       │
 	│ Mensaje . . .                                               │
 	└─────────────────────────────────────────────────────────────┘ */
-*{
-	margin:		0px;
-	padding:	0px;
+
+html {
+    background-color: rgba(100, 200, 255, 0.3);
+}
+h1{
+	text-align:	center;
+}
+h2 {
+	background: url(../Imgs/open.png) no-repeat 0 11px;
+	padding: 10px 0 0 25px;
+	cursor: pointer;
+	
+	border:	solid 3px black;
+	border-bottom:	none;
+	margin:	0px;
 }
 
-html{
-	background-color:	rgb(224, 236, 0);
+h2.close {
+	background-image: url(../Imgs/close.png);
 }
-
-#caja{
-	position: relative;
-    width: 50%;
-    left: 25%;
-    top: 25%;
-	min-height:	50px;
+.answer {
+	border:	solid 2px white;
+	margin:	0px;
 }
-
-.imgFlecha,
-.imgCirculo,
-.lineas{
-	position:	absolute;
-}
-
-.imgFlecha{
-	z-index:	3;
-	left:		0%;
-	
-	width:		60px;
-	height:		60px;
-	background-image:	url("../Imgs/drag.png");
-	background-repeat:	no-repeat;
-	margin-left:	-30px;
-}
-
-.imgCirculo{
-	z-index:	2;
-	left:		100%;
-	top:		15px;
-	
-	width:		30px;
-	height:		30px;
-	background-image:	url("../Imgs/drop.png");
-	background-repeat:	no-repeat;
-	margin-left:		-15px;
-}
-.lineas{
-	
-    background: linear-gradient(90deg, white 50%, transparent 50%);
-    background-size: 15px 4px;
-    background-position: 0px 0px;
-	
-	z-index:	1;
-	top:	50%;
-	right:	0px;
-	
-	height:	4px;
-	width:	100%;
-	margin-top:	2px;
-	animation-duration:	1s;
-	animation-name:		bordeMover;
-	/*animation-fill-mode: forwards;*/
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-	@keyframes bordeMover{
-		100%{
-			background-position: 15px 0px;
-		}
-	}

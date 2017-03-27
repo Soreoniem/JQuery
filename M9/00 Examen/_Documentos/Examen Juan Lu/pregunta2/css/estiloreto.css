@@ -1,0 +1,176 @@
+
+#fondo
+{
+    border-style: solid;  
+    border-width: 1px;       
+    height: 537px;
+    width: 480px;
+	margin-left: 460px;
+	margin-top: 20px;
+	background-image: url(./carros/texture.jpg);
+	box-shadow: 2px 2px 5px black;
+
+
+}
+
+#datos
+{
+   
+  border-width: 1px;  
+  padding: 10px;    
+    height: 100px;
+    width: 480px;
+    margin-top: -20px;
+	
+}
+
+#carros
+{
+
+margin-top: -20px;	
+}
+#tipoauto
+{
+    
+  border-width: 1px;      
+    height: 30px;
+    width: 480px;
+    padding: 10px;
+    margin-top: -50px;
+	
+}
+#chkizquierda1
+{
+   
+   border-width: 1px;         
+    height: 300px;
+    width: 80px;
+    padding: 30px;
+
+
+
+
+}
+#datosderecha1
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -400px;
+    
+
+}
+#chkizquierda2
+{
+   
+   border-width: 1px;         
+     height: 300px;
+    width: 80px;
+    padding: 30px;
+   float: left;
+   margin-top: -0px;
+
+}
+#datosderecha2
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -400px;
+
+}
+#chkizquierda3
+{
+   
+   border-width: 1px;         
+   height: 300px;
+    width: 100px;
+    padding: 30px;
+    margin-top: 0px;
+
+}
+#datosderecha3
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -400px;
+
+}
+#datosderecha4
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -30px;
+
+}
+#datosderecha5
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -30px;
+
+}
+#datosderecha6
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -30px;
+
+}
+#datosderecha7
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -400px;
+
+}
+#datosderecha8
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -400px;
+
+}
+#datosderecha9
+{
+    
+    border-width: 1px;      
+     height: 300px;
+    width: 280px;
+    padding: 30px;
+    margin-left: 130px;
+    margin-top: -400px;
+
+}
+
+
