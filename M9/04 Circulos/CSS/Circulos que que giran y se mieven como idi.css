@@ -1,0 +1,168 @@
+﻿/* [_► Posicionamiento ◄_]
+	relative = se mueve por su alrededor
+	absolute = se mueve por su alrededor quitanfo el flujo
+	fixed = se mueve por la ventana
+	
+	float = flotar a algún lado del padre;
+*/
+/* [_► Transiciones ◄_]
+	► Css afectado
+		transition-property: width;
+	
+	► Duración
+		transition-duration: 2s;
+	
+	► Tipo	(w3schools.com/css/tryit.asp?filename=trycss3_animation_speed)
+		transition-timing-function: linear;
+	
+	► Restraso
+		transition-delay: 1s;
+	
+	◄► Completo: (property, duration, timing-function, delay)
+		transition:	width 2s ease 1s;
+*/
+/* [_► Animaciones ◄_]
+	
+	► Retraso (timepo) (w3schools.com/cssref/css3_pr_animation-delay.asp)
+		animation-delay: .5s, 0s;
+	
+	► Duración (w3schools.com/cssref/css3_pr_animation-duration.asp)
+		animation-duration: 5s, 1s;
+
+	► Nombre (w3schools.com/cssref/css3_pr_animation-name.asp)
+		animation-name: caer, girarY;
+
+	► Mantener el final de la animación (www.w3schools.com/cssref/css3_pr_animation-fill-mode.asp)
+		animation-fill-mode: forwards;
+	
+	► Cuantas veces (www.w3schools.com/cssref/css3_pr_animation-iteration-count.asp)
+		animation-iteration-count: infinite, infinite;
+	
+	► FPS (www.w3schools.com/cssref/css3_pr_animation-timing-function.asp)
+		animation-timing-function: steps(200), steps(60);
+			30s =   1	fps
+			.5s =   60	fps
+			.3s =	100	fps
+		   ---
+			calculo:
+			7224 /24 = 301
+			(300 +1) *24 frames = 7224
+	
+	► Completo
+		animation: girarY 1s steps(60) infinite;
+	
+	► Llamada
+		@keyframes sprite{
+			100%{
+				background-position: -7224px;
+			}
+		}
+*/
+/* [_► Degradados ◄_]
+	background:	linear-gradient(135deg, rgba(0,0,0,0) 20%, red);
+				linear-gradient
+				radial-gradient
+					radial-gradient(circle, ...)
+					(probar: exactamente no se lo que hacen)
+					radial-gradient(closest-side at 60% 55%) encoger dentro
+					radial-gradient(farthest-side at 60% 55%) estirar dentro
+					radial-gradient(farthest-corner at 60% 55%) estirar dentro
+				repeating-linear-gradient
+	
+*/
+/* [_► Fuente propia ◄_]
+	
+	@font-face {
+		font-family: Minecraft;
+		src: url("/recursos/fuentes/Minecrafter.Alt.ttf");
+	}
+*/
+/* [_► Pulsaciones ◄_]
+	► Key Press
+		NOTA: Sustituir en el código: $("input") → $("*") para ver el úmero de la tecla
+		w3schools.com/jquery/tryit.asp?filename=tryjquery_event_which
+*/
+/* [_► Caja Título ◄_]*/																	/*
+		  ╔════════════╗
+		  ║   TÍTULO   ║
+	┌──╦┐ ╠────────────╣ ┌╦───────────────────────────────────────┐
+	│  ╚══╝            ╚══╝                                       │
+	│ Mensaje . . .                                               │
+	└─────────────────────────────────────────────────────────────┘ */
+*{
+	margin:		0px;
+	padding:	0px;
+	overflow:	hidden;
+	color:	whitesmoke;
+}
+html{
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+body{
+	width:	500px;
+	height:	500px;
+}
+div{
+	border:	dashed 1px whitesmoke;
+    width: 80%;
+    height: 80%;
+    padding-top: 0%;
+    position: relative;
+    left: 10%;
+    top: 10%;
+    border-radius: 50%;
+	transform:	rotate(0deg);
+	transform-origin: 50% 50%;
+	
+	animation-name: girar;
+	animation-duration: 3.5s;
+}
+	@keyframes girar{
+		0%{
+			transform:	rotate(0deg);
+			border:	dashed 1px rgba(224, 224, 224, 0.2);
+		}
+		50%{
+			transform:	rotate(360deg);
+			border:	dashed 1px rgba(224, 224, 224, 0.9);
+		}
+		100%{
+			transform:	rotate(720deg);
+			border:	dashed 1px rgba(224, 224, 224, 0.2);
+		}
+	}
+	@keyframes girarReves{
+		0%{
+			transform:	rotate(0deg);
+			border:	dashed 1px rgba(224, 224, 224, 0.2);
+			background-color:	rgba(224, 224, 224, 0.6);
+		}
+		50%{
+			transform:	rotate(-360deg);
+			border:	dashed 1px rgba(224, 224, 224, 0.9);
+			background-color:	rgba(224, 224, 224, 1);
+		}
+		100%{
+			transform:	rotate(-720deg);
+			border:	dashed 1px rgba(224, 224, 224, 0.2);
+			background-color:	rgba(224, 224, 224, 0.6);
+		}
+	}
+
+div, .puntito{
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite, infinite;
+	animation-timing-function: steps(80);
+}
+.puntito{
+	background-color:	whitesmoke;
+	position: absolute;
+    width: 1%;
+    height: 1%;
+    left: 49%;
+    top: 49%;
+	
+	animation-duration: 1.5s;
+	animation-name: girarReves;
+}
