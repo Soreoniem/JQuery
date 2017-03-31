@@ -92,77 +92,15 @@
 *{
 	margin:		0px;
 	padding:	0px;
-	overflow:	hidden;
-	color:	whitesmoke;
-}
-html{
-	background-color: rgba(0, 0, 0, 0.9);
 }
 
-body{
-	width:	500px;
-	height:	500px;
+td{
+	width:	10px;
+	height: 13px;
 }
-div{
-	border:	dashed 1px whitesmoke;
-    width: 80%;
-    height: 80%;
-    padding-top: 0%;
-    position: relative;
-    left: 10%;
-    top: 10%;
-    border-radius: 50%;
-	transform:	rotate(0deg);
-	transform-origin: 50% 50%;
-	
-	animation-name: girar;
-	animation-duration: 3.5s;
-}
-	@keyframes girar{
-		0%{
-			transform:	rotate(0deg);
-			border:	dashed 1px rgba(224, 224, 224, 0.2);
-		}
-		50%{
-			transform:	rotate(360deg);
-			border:	dashed 1px rgba(224, 224, 224, 0.9);
-		}
-		100%{
-			transform:	rotate(720deg);
-			border:	dashed 1px rgba(224, 224, 224, 0.2);
-		}
-	}
-	@keyframes girarReves{
-		0%{
-			transform:	rotate(0deg);
-			border:	dashed 1px rgba(224, 224, 224, 0.2);
-			background-color:	rgba(224, 224, 224, 0.6);
-		}
-		50%{
-			transform:	rotate(-360deg);
-			border:	dashed 1px rgba(224, 224, 224, 0.9);
-			background-color:	rgba(224, 224, 224, 1);
-		}
-		100%{
-			transform:	rotate(-720deg);
-			border:	dashed 1px rgba(224, 224, 224, 0.2);
-			background-color:	rgba(224, 224, 224, 0.6);
-		}
-	}
 
-div, .puntito{
-	animation-duration: 7s;
-	animation-iteration-count: infinite, infinite;
-	animation-timing-function: steps(80);
-}
-.puntito{
-	background-color:	whitesmoke;
-	position: absolute;
-    width: 1%;
-    height: 1%;
-    left: 49%;
-    top: 49%;
-	
-	animation-duration: 1.5s;
-	animation-name: girarReves;
+table{
+	border: solid 1px black;
+	width: 100%;
+	height: 100%;
 }
