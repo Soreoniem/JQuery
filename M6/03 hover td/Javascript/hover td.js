@@ -1,4 +1,6 @@
-﻿var colores = ["black", "yellow", "red", "blue", "green", "white"];
+﻿var mouseDown = false;
+
+var colores = ["black", "yellow", "red", "blue", "green", "white"];
 var idColor = 0;
 
 function iniciarScript(){
@@ -8,7 +10,7 @@ function iniciarScript(){
 	for( var i=1 ; i<=tablaAnchura ; i++ ){
 		tabla += "<tr>";
 			for( var j=1 ; j<=tablaAnchura ; j++ ){
-				tabla += "<td onmouseover=\"colorear(this)\"></td>";
+				tabla += "<td onmousedown=\"ratonAbajo();colorear(this)\" onmouseover=\"colorear(this)\"></td>";
 			}
 		tabla += "</tr>";
 	}
@@ -17,10 +19,19 @@ function iniciarScript(){
 }
 
 function colorear(esteTD){
-	esteTD.style.backgroundColor = colores[idColor];
+	if(mouseDown){
+		esteTD.style.backgroundColor = colores[idColor];
+	}
 }
 
 function cambioColor(){
 	idColor++;
 	if( idColor >= colores.length ){ idColor = 0; }
+}
+
+function ratonAbajo(){
+	mouseDown = true;
+}
+function ratonArriba(){
+	mouseDown = false;
 }
